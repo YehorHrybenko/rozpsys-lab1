@@ -29,10 +29,6 @@ namespace Lab1
 
             app.UseHttpsRedirection();
 
-            //app.MapGet("/calc", ([FromServices]))
-
-
-
             app.UseAuthorization();
 
             app.MapControllers();
