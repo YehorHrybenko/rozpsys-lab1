@@ -11,7 +11,7 @@ namespace Lab1.Controllers
         [HttpGet(Name = "Calculations")]
         public Task<string> Get([FromServices] IGrpcService grpcService, CancellationToken cancellationToken)
         {
-            var result = grpcService.SayHelloAsync("GRPC", cancellationToken);
+            var result = grpcService.SayHelloAsync("YEGOR", cancellationToken);
 
             return result;
         }

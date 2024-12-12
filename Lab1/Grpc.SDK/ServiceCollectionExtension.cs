@@ -10,7 +10,7 @@ namespace Grpc.SDK
         {
             services.AddGrpcClient<Greeter.GreeterClient>(client =>
             {
-                client.Address = new Uri("https://localhost:7190");
+                client.Address = new Uri("https://provider:8080");
             });
 
             services.AddScoped<IGrpcService, GrpcService>();

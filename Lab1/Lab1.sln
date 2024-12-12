@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grpc.SDK", "Grpc.SDK\Grpc.SDK.csproj", "{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{01301508-6137-48DC-BAA4-ED0C6C0D4723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01301508-6137-48DC-BAA4-ED0C6C0D4723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01301508-6137-48DC-BAA4-ED0C6C0D4723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01301508-6137-48DC-BAA4-ED0C6C0D4723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01301508-6137-48DC-BAA4-ED0C6C0D4723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

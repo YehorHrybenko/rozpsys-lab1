@@ -1,0 +1,14 @@
+
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: Lab1/Dockerfile
+
+  provider:
+    container_name: provider
+    image: ${DOCKER_REGISTRY-}grpcservice
+    build:
+      context: .
+      dockerfile: GrpcService/Dockerfile
