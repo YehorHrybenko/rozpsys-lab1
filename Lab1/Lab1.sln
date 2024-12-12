@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "Lab1\API.csproj", "{CC4D64A7-3611-4D79-8DF3-936BCCFE16FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{5AA88452-4DA3-428F-B66A-3BB97126F2D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grpc.SDK", "Grpc.SDK\Grpc.SDK.csproj", "{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC4D64A7-3611-4D79-8DF3-936BCCFE16FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4D64A7-3611-4D79-8DF3-936BCCFE16FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4D64A7-3611-4D79-8DF3-936BCCFE16FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4D64A7-3611-4D79-8DF3-936BCCFE16FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA88452-4DA3-428F-B66A-3BB97126F2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA88452-4DA3-428F-B66A-3BB97126F2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA88452-4DA3-428F-B66A-3BB97126F2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA88452-4DA3-428F-B66A-3BB97126F2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D6210CB-8443-4B98-BFE5-2AA9BC9AA2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CF5FEEE-9E97-4AA4-8488-93E1C186CCCA}
+	EndGlobalSection
+EndGlobal
