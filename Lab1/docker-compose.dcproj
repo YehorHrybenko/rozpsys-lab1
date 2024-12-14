@@ -7,7 +7,10 @@
     <ProjectGuid>01301508-6137-48dc-baa4-ed0c6c0d4723</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>api</DockerServiceName>
+    <DockerServiceName>api-1</DockerServiceName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ContainerDevelopmentMode>Regular</ContainerDevelopmentMode>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

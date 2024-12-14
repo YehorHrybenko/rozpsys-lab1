@@ -4,7 +4,12 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "api": "StartDebugging"
+        "api-1": "StartDebugging",
+        "api-2": "StartDebugging",
+        "api-lb": "StartWithoutDebugging",
+        "provider-1": "StartDebugging",
+        "provider-2": "StartDebugging",
+        "provider-lb": "StartWithoutDebugging"
       }
     }
   }

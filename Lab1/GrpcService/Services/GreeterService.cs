@@ -1,11 +1,10 @@
 using Grpc.Core;
-using GrpcService;
 
 namespace GrpcService.Services
 {
     public class GreeterService : Greeter.GreeterBase
     {
-        private static readonly int ServerID = new Random().Next(0, 100);
+        private static readonly string? ServerID = Environment.GetEnvironmentVariable("SERVICE_NAME");
 
         private readonly ILogger<GreeterService> _logger;
         public GreeterService(ILogger<GreeterService> logger)
@@ -15,6 +14,7 @@ namespace GrpcService.Services
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
+            Console.WriteLine("Replied to request.");
             return Task.FromResult(new HelloReply
             {
                 Message = $"Hello {request.Name} from server {ServerID}!"

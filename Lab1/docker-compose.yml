@@ -1,30 +1,54 @@
 
 services:
-  api:
+
+  api-lb:
+    image: nginx:latest
+    container_name: api-lb
+    volumes:
+      - ./API/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+    - "5000:5000"
+
+  api-1:
     image: ${DOCKER_REGISTRY-}api
+    container_name: api-1
     build:
       context: .
-      dockerfile: Lab1/Dockerfile
-    # networks:
-    #   - app-network
+      dockerfile: API/Dockerfile
+    environment:
+        - SERVICE_NAME=api-1
+        - CLIENT_ADDRESS=http://provider-lb:5000
 
-  # nginx:
-  #   image: nginx:latest
-  #   container_name: nginx-lb
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
-  #   networks:
-  #     - app-network
+  api-2:
+    image: ${DOCKER_REGISTRY-}api
+    container_name: api-2
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    environment:
+        - SERVICE_NAME=api-2
+        - CLIENT_ADDRESS=http://provider-lb:5000
 
-  provider:
-    container_name: provider
+  provider-lb:
+    image: nginx:latest
+    container_name: provider-lb
+    volumes:
+      - ./GrpcService/nginx.conf:/etc/nginx/nginx.conf:ro
+
+  provider-1:
+    container_name: provider-1
     image: ${DOCKER_REGISTRY-}grpcservice
     build:
       context: .
       dockerfile: GrpcService/Dockerfile
-    # networks:
-    #   - app-network
+    environment:
+        - SERVICE_NAME=provider-1
 
-# networks:
-#   app-network:
-#     driver: bridge
+  provider-2:
+    container_name: provider-2
+    image: ${DOCKER_REGISTRY-}grpcservice
+    build:
+      context: .
+      dockerfile: GrpcService/Dockerfile
+    environment:
+        - SERVICE_NAME=provider-2
