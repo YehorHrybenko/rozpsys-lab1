@@ -26,8 +26,8 @@ public class GrpcService : IGrpcService
         }
         catch (RpcException)
         {
+            Console.WriteLine("Backend service unavailable.");
             throw;
-            //throw new ApplicationException("Backend service unavailable.");
         }
     }
 }

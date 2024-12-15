@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using Grpc.SDK;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lab1.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CalculationsController : ControllerBase
