@@ -7,7 +7,10 @@ services:
     volumes:
       - ./API/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-    - "5000:5000"
+      - "5000:5000"
+    depends_on:
+      - "api-1"
+      - "api-2"
 
   api-1:
     image: ${DOCKER_REGISTRY-}api
@@ -34,6 +37,9 @@ services:
     container_name: provider-lb
     volumes:
       - ./GrpcService/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - "provider-1"
+      - "provider-2"
 
   provider-1:
     container_name: provider-1
