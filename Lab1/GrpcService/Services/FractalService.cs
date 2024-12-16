@@ -1,4 +1,5 @@
 using Grpc.Core;
+using System.Diagnostics;
 using static GrpcService.Algorithm.FractalGenerator;
 
 namespace GrpcService.Services
@@ -10,18 +11,16 @@ namespace GrpcService.Services
         public override Task<FractalReply> GenerateFractal(FractalRequest request, ServerCallContext context)
         {
             Console.WriteLine("Replied to request.");
+            
+            int seed = request.Seed != -1 ? request.Seed : new Random().Next();
 
-            string fractal;
-            int seed;
+            var stopwatch = Stopwatch.StartNew();
 
-            if (request.Seed != -1)
-            {
-                (fractal, seed) = JuliaFractal.GenerateFractal(request.Size, request.Quality, request.Seed);
-            }
-            else
-            {
-                fractal = JuliaFractal.GenerateFractal(request.Size, request.Quality, out seed);
-            }
+            var fractal = JuliaFractal.GenerateFractal(request.Size, request.Quality, request.Seed);
+
+            stopwatch.Stop();
+
+            Console.WriteLine($"Time spent on calculations: {stopwatch.ElapsedMilliseconds} ms");
 
             return Task.FromResult(new FractalReply
             {

@@ -38,9 +38,8 @@ public static class FractalGenerator
 
         private static readonly Rgba32 EmptyColor = new(240, 240, 240, 255);
 
-        public static (string, int) GenerateFractal(int imageSize, int quality, int? selectedSeed = null)
+        public static string GenerateFractal(int imageSize, int quality, int seed)
         {
-            int seed = selectedSeed ?? new Random().Next();
             Random random = new(seed);
 
             using var image = new Image<Rgba32>(imageSize, imageSize);
@@ -73,14 +72,7 @@ public static class FractalGenerator
 
             string dataUrl = $"data:image/webp;base64,{base64WebP}";
 
-            return (dataUrl, seed);
-        }
-
-        public static string GenerateFractal(int imageSize, int compression, out int Seed)
-        {
-            var (fractal, seed) = GenerateFractal(imageSize, compression);
-            Seed = seed;
-            return fractal;
+            return dataUrl;
         }
 
         private static double EvaluateJuliaSetPoint(Complex point, Complex offset)
