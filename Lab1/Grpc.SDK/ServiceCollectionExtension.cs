@@ -10,7 +10,7 @@ namespace Grpc.SDK
 
         public static void AddGrpcSdk(this IServiceCollection services)
         {
-            services.AddGrpcClient<Greeter.GreeterClient>(client =>
+            services.AddGrpcClient<Fractal.FractalClient>(client =>
             {
                 if (clientAddress == null) throw new ApplicationException("Client address not specified.");
                 client.Address = new Uri(clientAddress);

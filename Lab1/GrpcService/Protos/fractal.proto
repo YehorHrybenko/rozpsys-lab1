@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package fractal;
+
+service Fractal {
+  rpc GenerateFractal (FractalRequest) returns (FractalReply);
+}
+
+message FractalRequest {
+  int32 size = 1;
+  int32 seed = 2;
+  int32 quality = 3;
+}
+
+message FractalReply {
+  string fractal = 1;
+  int32 seed = 2;
+}

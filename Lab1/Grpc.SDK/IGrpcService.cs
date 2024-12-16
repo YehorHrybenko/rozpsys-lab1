@@ -5,24 +5,24 @@ namespace Grpc.SDK;
 
 public interface IGrpcService
 {
-    Task<string> SayHelloAsync(string name, CancellationToken cancellationToken);
+    (string, int) GenerateFractal(int size, int seed, int quality, CancellationToken cancellationToken);
 }
 
 public class GrpcService : IGrpcService
 {
-    private readonly Greeter.GreeterClient greeterClient;
+    private readonly Fractal.FractalClient fractalClient;
 
-    public GrpcService(Greeter.GreeterClient greeterClient)
+    public GrpcService(Fractal.FractalClient fractalClient)
     {
-        this.greeterClient = greeterClient;
+        this.fractalClient = fractalClient;
     }
 
-    public async Task<string> SayHelloAsync(string name, CancellationToken cancellationToken)
+    public (string, int) GenerateFractal(int size, int seed, int quality, CancellationToken cancellationToken)
     {
         try
         {
-            var result = await greeterClient.SayHelloAsync(new HelloRequest { Name = name }, null, null, cancellationToken);
-            return result.Message;
+            var result = fractalClient.GenerateFractal(new FractalRequest { Size = size, Seed = seed, Quality = quality }, null, DateTime.UtcNow.AddSeconds(7), cancellationToken);
+            return (result.Fractal, result.Seed);
         }
         catch (RpcException)
         {
