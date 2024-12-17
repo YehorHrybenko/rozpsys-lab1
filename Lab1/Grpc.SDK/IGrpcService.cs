@@ -26,7 +26,13 @@ public class GrpcService : IGrpcService
                 { "Authorization", $"Bearer {token}" }
             };
 
-            var result = fractalClient.GenerateFractal(new FractalRequest { Size = size, Seed = seed, Quality = quality }, headers: headers, DateTime.UtcNow.AddSeconds(7), cancellationToken);
+            var result = fractalClient.GenerateFractal(
+                new FractalRequest { Size = size, Seed = seed, Quality = quality },
+                headers: headers,
+                deadline: DateTime.UtcNow.AddSeconds(7),
+                cancellationToken
+            );
+
             return (result.Fractal, result.Seed);
         }
         catch (RpcException)
