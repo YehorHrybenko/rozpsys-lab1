@@ -1,9 +1,11 @@
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
 using static GrpcService.Algorithm.FractalGenerator;
 
 namespace GrpcService.Services
 {
+    [Authorize]
     public class FractalService() : Fractal.FractalBase
     {
         private static readonly string? ServerID = Environment.GetEnvironmentVariable("SERVICE_NAME");

@@ -3,6 +3,7 @@
 using Grpc.SDK;
 using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
+using System.Net;
 
 namespace API.Controllers;
 
@@ -16,14 +17,23 @@ public class FractalGenerationController : ControllerBase
     [HttpGet(Name = "generate")]
     public string Get([FromServices] IGrpcService grpcService, CancellationToken cancellationToken, int size = 256, int quality = 80, int inputSeed = -1)
     {
-        var stopwatch = Stopwatch.StartNew();
+        var authHeader = HttpContext.Request.Headers["Authorization"].FirstOrDefault();
 
-        var (fractal, generationSeed) = grpcService.GenerateFractal(size, inputSeed, quality, cancellationToken);
+        if (authHeader != null && authHeader.StartsWith("Bearer "))
+        {
+            var token = authHeader.Substring("Bearer ".Length).Trim();
 
-        stopwatch.Stop();
-        Console.WriteLine($"Generated image using seed {generationSeed}");
-        Console.WriteLine($"Time spent on request: {stopwatch.ElapsedMilliseconds} ms");
+            var stopwatch = Stopwatch.StartNew();
 
-        return fractal;
+            var (fractal, generationSeed) = grpcService.GenerateFractal(size, inputSeed, quality, token, cancellationToken);
+
+            stopwatch.Stop();
+            Console.WriteLine($"Generated image using seed {generationSeed}");
+            Console.WriteLine($"Time spent on request: {stopwatch.ElapsedMilliseconds} ms");
+
+            return fractal;
+        }
+
+        return "Error: unauthorized request";
     }
 }
